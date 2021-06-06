@@ -17,13 +17,12 @@ exports.getPredios =  (req,res) =>
     {
        
         if(resultados){
-            console.log(resultados)
+            //res.send("Predios listados")
             res.send(resultados)
         }
         if(erro)
         {
-            console.log(erro);
-            res.send(erro)
+            res.send("Erro na listagem dos preddios")
         }
 
     })
@@ -32,18 +31,16 @@ exports.getPredioProjetoLongo =  (req,res) =>
 {
     conexao.query('SELECT clienteNome,clienteSexo,clientePrivado,clienteProvincia,clienteProvincia,'+
         'clienteMunicipio,clienteRua,clienteNumero,'+
-        'MAX(duracao) FROM `predios`',
+        'MAX(duracao) as duracaoMaxima FROM `predios`',
     function(erro,resultados) 
     {
        
         if(resultados){
-            console.log(resultados)
             res.send(resultados)
         }
         if(erro)
         {
-            console.log(erro);
-            res.send(erro)
+            res.send("Erro na listagem do projeto longo")
         }
 
     })

@@ -6,7 +6,7 @@ route.get('/',(req,res)=>{
     res.send(req.body)
 })
 route.get('/listar',PredioController.getPredios)
-route.get('/projetolongo/',PredioController.getPredioProjetoLongo)
+route.get('/projetolongo',PredioController.getPredioProjetoLongo)
 route.post('/add',PredioController.addPredios)
 route.put('/update',PredioController.updatePredios)
 route.delete('/delete',PredioController.deletePredios)

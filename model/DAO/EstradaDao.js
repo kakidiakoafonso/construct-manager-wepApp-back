@@ -22,7 +22,7 @@ class EstradaDao {
         }
         )
     }
-    updateEstrada(Estrada)
+    updateEstrada(Estrada,id)
     {
         //console.log(Estrada.getNome());
         conexao.execute('UPDATE `estrada` SET `nome`=?,`descricao`=?,`orcamento`=?,`codigoIdentificacao`=?,`dataInicio`=?,`duracao`=?,`percentualConformidade`=?,`ferroviasEstradas`=?,`comprimento`=?,`dentroProvincia`=?,`clienteNome`=?,`clienteSexo`=?,`clientePrivado`=?,`clienteProvincia`=?,`clienteMunicipio`=?,`clienteRua`=?,`clienteNumero`=?,`arquitetoNome`=?,`arquitetoSexo`=?,`arquitetoAnoExperiencia`=? WHERE `idEstrada`=?',
@@ -31,7 +31,7 @@ class EstradaDao {
             Estrada.getFerroviasEstradas(),Estrada.getComprimento(),Estrada.getDentroProvincia(),Estrada.getCliente().getNome(),
             Estrada.getCliente().getSexo(),Estrada.getCliente().getPrivado(), Estrada.getCliente().getEndereco().getProvincia(), 
             Estrada.getCliente().getEndereco().getMunicipio(),Estrada.getCliente().getEndereco().getRua(),
-            Estrada.getCliente().getEndereco().getNumero(),Estrada.getArquiteto().getNome(),Estrada.getArquiteto().getSexo(),Estrada.getArquiteto().getAnoExperiencia(), 5 ],
+            Estrada.getCliente().getEndereco().getNumero(),Estrada.getArquiteto().getNome(),Estrada.getArquiteto().getSexo(),Estrada.getArquiteto().getAnoExperiencia(), id ],
         function(erro,resultado){
             if(!erro){
                 console.log("Entrou")
@@ -51,9 +51,9 @@ class EstradaDao {
 
         })
     }
-    deleteEstrada(Predio){
+    deleteEstrada(id){
         conexao.execute('DELETE FROM `estrada` WHERE idEstrada = ?',
-        [3],
+        [id],
         function(erro,resultados){
             if(!erro){
                 console.log("Apagado");
