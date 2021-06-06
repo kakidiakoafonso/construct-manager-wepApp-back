@@ -19,8 +19,8 @@ const arquiteto = new Arquiteto("Vava Pedro","Masculino",3)
 
 //Predios
 const prediodao = new PredioDao()
-const predio = new Predio('nome1','descricao1',cliente, 'orcamento1', 'codigoIdentificacao1', 'dataInicio1', 
-    'duracao1',arquiteto, 'percentualConformidade1', 'alturaMaxima1', endereco, 'tipo1')
+// const predio = new Predio('nome1','descricao1',cliente, 1200400 , 'codigoIdentificacao1', 'dataInicio1', 
+// 12,arquiteto, 'percentualConformidade1', 'alturaMaxima1', endereco, 'tipo1')
 const pre = new PredioDao()
-//pre.updatePredio(predio);    
-pre.getPredios()
+// pre.updatePredio(predio);    
+console.log(pre.getPredios());

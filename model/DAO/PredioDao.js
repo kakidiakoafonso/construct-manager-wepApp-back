@@ -27,7 +27,7 @@ class PredioDao {
         }
         )
     }
-    updatePredio(Predio)
+    updatePredio(Predio,id)
     {
         //console.log(Predio.getNome());
         conexao.execute('UPDATE `predios` SET `nome`=?,`descricao`=?,`orcamento`=?,`codigoIdentificacao`=?,`dataInicio`=?,`duracao`=?,`percentualConformidade`=?,`tipo`=?,`alturaMaxima`=?,`provincia`=?,`municipio`=?,`rua`=?,`numero`=?,`clienteNome`=?,`clienteSexo`=?,`clientePrivado`=?,`clienteProvincia`=?,`clienteMunicipio`=?,`clienteRua`=?,`clienteNumero`=?,`arquitetoNome`=?,`arquitetoSexo`=?,`arquitetoAnoExperiencia`=? WHERE `idPredio` = ?',
@@ -37,7 +37,7 @@ class PredioDao {
             Predio.getEndereco().getNumero(), Predio.getCliente().getNome(),Predio.getCliente().getSexo(),
             Predio.getCliente().getPrivado(),Predio.getCliente().getEndereco().getProvincia(), 
             Predio.getCliente().getEndereco().getMunicipio(),Predio.getCliente().getEndereco().getRua(),
-            Predio.getCliente().getEndereco().getNumero(),Predio.getArquiteto().getNome(),Predio.getArquiteto().getSexo(),Predio.getArquiteto().getAnoExperiencia(),1],
+            Predio.getCliente().getEndereco().getNumero(),Predio.getArquiteto().getNome(),Predio.getArquiteto().getSexo(),Predio.getArquiteto().getAnoExperiencia(),id],
         function(erro,resultado){
             if(!erro){
                 console.log("Entrou")
@@ -47,19 +47,23 @@ class PredioDao {
     getPredios ()
     {
         conexao.query('SELECT * FROM `predios`',
-        function(erro,resultados){
-            if(erro){
-                console.log(erro);
-            }
+        function(erro,resultados) 
+        {
+           
             if(resultados){
                 console.log(resultados)
+            }
+            if(erro)
+            {
+                console.log(erro);
             }
 
         })
     }
-    deletePredio(Predio){
+      deletePredio(id)
+      {
         conexao.execute('DELETE FROM `predios` WHERE idPredio = ?',
-        [25],
+        [id],
         function(erro,resultados){
             if(!erro){
                 console.log("Apagado");
@@ -67,6 +71,7 @@ class PredioDao {
 
         })
     }
+    
 }
 
 module.exports = PredioDao;

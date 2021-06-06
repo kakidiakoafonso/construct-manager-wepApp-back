@@ -1,6 +1,6 @@
 const conexao = require('../../config/getConnection')
 
-class DAO {
+class EstradaDao {
     InsertEstrada(Estrada) 
     {
         console.log(Estrada.getDaInicio());
@@ -63,7 +63,7 @@ class DAO {
     }
 }
 
-module.exports = DAO;
+module.exports = EstradaDao
 
 
 
