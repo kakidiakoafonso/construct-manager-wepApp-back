@@ -1,9 +1,9 @@
 const conexao = require('../../config/getConnection')
 
 class PredioDao {
-    InsertPredio(Predio) 
+    InsertPredio(Predio,res) 
     {
-        console.log(Predio.getArquiteto());
+        console.log(Predio)
         conexao.execute('INSERT INTO `predios`(`nome`, `descricao`, `orcamento`, `codigoIdentificacao`, `dataInicio`,'+ 
         '`duracao`, `percentualConformidade`, `tipo`, `alturaMaxima`, `provincia`, `municipio`, `rua`, `numero`, '+
         '`clienteNome`, `clienteSexo`, `clientePrivado`, `clienteProvincia`, `clienteMunicipio`, `clienteRua`, '+
@@ -19,11 +19,20 @@ class PredioDao {
      function(erro,resultado,campos) 
         {
             if(erro) 
-                {console.log("Erro" + erro)}    
+                {
+                    console.log("Erro" + erro)
+                    res.send("Dados do predio nao introduzido")
+                }    
             if(resultado) 
-                {console.log("Resultado")}  
+                {
+                   
+                    res.send("Dados do predio introduzido")
+                }  
             if(campos) 
-                {console.log("Campos")}
+                {
+                    console.log("Campos")
+                    res.send("Campos")
+                }
         }
         )
     }
@@ -46,7 +55,7 @@ class PredioDao {
     }
     getPredios ()
     {
-        conexao.query('SELECT * FROM `predios`',
+        conexao.query('SELECT * FROM `predios` order BY idPredio DESC',
         function(erro,resultados) 
         {
            

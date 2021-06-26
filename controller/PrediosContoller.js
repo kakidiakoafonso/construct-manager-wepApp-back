@@ -48,18 +48,18 @@ exports.getPredioProjetoLongo =  (req,res) =>
 exports.addPredios =  (req,res) =>
 {
     const enderecoPredio = new Endereco(req.body.provincia,req.body.municipio,req.body.rua,req.body.numero)
-    console.log(enderecoPredio)
     const enderecoCliente = new Endereco(req.body.clienteProvincia,req.body.clienteMunicipio,req.body.clienteRua, req.body.clienteNumero)
     const arquiteto = new Arquiteto(req.body.arquitetoNome,req.body.arquitetoSexo,req.body.arquitetoAnoExperiencia)
     const cliente = new Cliente(req.body.clienteNome, req.body.clienteSexo, enderecoCliente, req.body.clientePrivado)
     const predio = new Predio(req.body.nome,req.body.descricao,cliente, req.body.orcamento , req.body.codigoIdentificacao ,req.body.dataInicio ,req.body.duracao,
         arquiteto, req.body.percentualConformidade , req.body.alturaMaxima ,enderecoPredio ,req.body.tipo)
-        try {
-            dao.InsertPredio(predio)
-            res.send("OK introduzido")
+        try 
+        {
+            dao.InsertPredio(predio,res)
+            //res.send("OK introduzido")
         } catch (error) {
-            res.send("Nao introduzido")
-            console.log(error);
+            //res.send("Nao introduzido")
+            res.send(error);
         }
     
 }

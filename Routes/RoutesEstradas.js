@@ -8,6 +8,6 @@ route.get('/',(req,res)=>{
 route.get('/listar',EstradaController.get)
 route.get('/projetolongo',EstradaController.getPredioProjetoLongo)
 route.post('/add',EstradaController.add)
-route.put('/update',EstradaController.update)
-route.delete('/delete',EstradaController.delete)
+route.post('/update',EstradaController.update)
+route.post('/delete',EstradaController.delete)
 module.exports = route
