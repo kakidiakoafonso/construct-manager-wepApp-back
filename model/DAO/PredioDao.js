@@ -82,7 +82,7 @@ class PredioDao {
     }
       dadosClienteProjetoLongo(res,municipio)
       {
-        conexao.execute('SELECT  distinct  municipio, clienteNome, clienteSexo, clientePrivado, clienteProvincia, clienteMunicipio, clienteRua, clienteNumero, max(duracao) as  projetoMaximo from `predios` where clienteMunicipio = ?',
+        conexao.execute('SELECT  distinct  municipio, clienteNome, clienteSexo, clientePrivado, clienteProvincia, clienteMunicipio, clienteRua, clienteNumero, max(duracao) as  projetoMaximo from `predios` where clienteMunicipio = ? ',
         [municipio],
         function(erro,resultados){
             if(resultados){
