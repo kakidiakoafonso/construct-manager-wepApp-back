@@ -89,3 +89,24 @@ exports.delete =  (req,res) =>
         }
     
 }
+exports.updatepercentual =  (req,res) =>
+{
+    try {
+        dao.updatePercentual(req.body.id, req.body.codigoIdentificacao, req.body.percentualConformidade)
+        res.send("OK, Dados do predio atualizado")
+    } catch (error) {
+        res.send("Dados do predio nao atualizado")
+        console.log(error);
+    }
+    
+}
+exports.getMedia =  (req,res) =>
+{
+    try {
+        dao.getMedia(res,req.body.dataInicio)
+    } catch (error) {
+        res.send("Dados do predio nao atualizado")
+        console.log(error);
+    }
+    
+}

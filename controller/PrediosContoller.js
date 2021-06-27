@@ -93,3 +93,24 @@ exports.deletePredios =  (req,res) =>
         }
     
 }
+exports.updatePercentual =  (req,res) =>
+{
+        try {
+            dao.updatePercentual(req.body.id, req.body.codigoIdentificacao, req.body.percentualConformidade)
+            res.send("OK, Dados do predio atualizado")
+        } catch (error) {
+            res.send("Dados do predio nao atualizado")
+            console.log(error);
+        }
+    
+}
+exports.getPredioProjetoLongoClienteInfo =  (req,res) =>
+{
+        try {
+            dao.dadosClienteProjetoLongo(res,req.body.municipio)
+        } catch (error) {
+            res.send("Dados do predio nao atualizado")
+            console.log(error);
+        }
+    
+}

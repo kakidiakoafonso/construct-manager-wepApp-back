@@ -61,6 +61,44 @@ class EstradaDao {
 
         })
     }
+    updatePercentual(id,codigoIdentificacao,percentualConformidade)
+    {
+        
+        conexao.execute('UPDATE `estrada` SET `percentualConformidade` = ? WHERE `estrada`.`idEstrada` = ? and `estrada`.`codigoIdentificacao` = ?',
+            [percentualConformidade,id,codigoIdentificacao], function(erro,resultados) 
+            {
+               
+                if(resultados){
+                    console.log(resultados)
+                }
+                if(erro)
+                {
+                    console.log(erro);
+                }
+    
+            }
+            )
+    }
+    getMedia(res,data)
+    {
+        
+        conexao.execute('select avg(comprimento) from estrada where dataInicio >?',
+            [data], function(erro,resultados) 
+            {
+               
+                if(resultados){
+                    console.log(resultados)
+                    res.send(resultados)
+                }
+                if(erro)
+                {
+                    console.log(erro);
+                    res.send(erro)
+                }
+    
+            }
+            )
+    }
 }
 
 module.exports = EstradaDao

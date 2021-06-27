@@ -80,6 +80,40 @@ class PredioDao {
 
         })
     }
+      dadosClienteProjetoLongo(res,municipio)
+      {
+        conexao.execute('SELECT  distinct  municipio, clienteNome, clienteSexo, clientePrivado, clienteProvincia, clienteMunicipio, clienteRua, clienteNumero, max(duracao) as  projetoMaximo from `predios` where clienteMunicipio = ?',
+        [municipio],
+        function(erro,resultados){
+            if(resultados){
+                console.log("Listagem dos dados");
+                res.send(resultados)
+            }
+            if(erro){
+                console.log("Erro na listagem: "+erro);
+                res.send("Erro na listagem: "+erro)
+            }
+
+        })
+    }
+    updatePercentual(id,codigoIdentificacao,percentualConformidade)
+    {
+        
+        conexao.execute('UPDATE `predios` SET `percentualConformidade` = ? WHERE `predios`.`idPredio` = ? and `predios`.`codigoIdentificacao` = ?',
+            [percentualConformidade,id,codigoIdentificacao], function(erro,resultados) 
+            {
+               
+                if(resultados){
+                    console.log(resultados)
+                }
+                if(erro)
+                {
+                    console.log(erro);
+                }
+    
+            }
+            )
+    }
     
 }
 
